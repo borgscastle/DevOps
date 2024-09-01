@@ -25,6 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      # Login to Azure Container Registry
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: judevops.azurecr.io
+          username: ${{ secrets.USERNAME_FOR_REPO }}
+          password: ${{ secrets.password_for_devopstoken }}
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
