@@ -38,9 +38,10 @@ jobs:
         run: echo Hello, world!
 
       # Build and push Docker image
-      - name: Build and push Docker image
-        env:
-          IMAGE_NAME: jonathan_borg-calc
+      - name: Build Docker image
         run: |
-          docker build -f DevOps_Local/BE -t judevops.azurecr.io/$IMAGE_NAME:${{ github.sha }} .
-          docker push judevops.azurecr.io/$IMAGE_NAME:${{ github.sha }}
+          docker build -t judevops.azurecr.io/jonathan_borg-calculator:latest .
+          
+      - name: Push Docker image
+        run: |
+          docker push judevops.azurecr.io/jonathan_borg-calculator:latest
