@@ -42,5 +42,5 @@ jobs:
         env:
           IMAGE_NAME: jonathan_borg-calc
         run: |
-          docker build -t judevops.azurecr.io/$IMAGE_NAME:${{ github.sha }} .
+          docker build -f DevOps_Local/BE/dockerfile -t judevops.azurecr.io/$IMAGE_NAME:${{ github.sha }} .
           docker push judevops.azurecr.io/$IMAGE_NAME:${{ github.sha }}
