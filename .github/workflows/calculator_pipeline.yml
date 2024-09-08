@@ -50,7 +50,9 @@ jobs:
           python BE/calculator.py --rest &
           # Wait for a few seconds to ensure the API starts properly
           sleep 10
-        
+
+      - name: Set up PYTHONPATH
+        run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
       # Run tests with pytest
       - name: Run tests with pytest
