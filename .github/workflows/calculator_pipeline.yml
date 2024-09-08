@@ -54,7 +54,7 @@ jobs:
       # Run tests with pytest
       - name: Run tests with pytest
         run: |
-          pytest BE/tests
+          pytest DevOps_Local/BE/tests
 
       # Build and push Docker image
       - name: Build Docker image
