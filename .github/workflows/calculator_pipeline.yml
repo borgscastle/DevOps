@@ -62,7 +62,7 @@ jobs:
       # Build and push Docker image
       - name: Build Docker image
         run: |
-          docker build -t judevops.azurecr.io/jonathan_borg-calc ./DevOps_Local/BE
+          docker build -t judevops.azurecr.io/jonathan_borg-calc BE
           
       - name: Push Docker image
         run: |
