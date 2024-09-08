@@ -37,6 +37,25 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      # Start the REST API
+      - name: Start the REST API
+        run: |
+          # Run the API in the background
+          python ./DevOps_Local/BE/calculator.py --rest &
+          # Wait for a few seconds to ensure the API starts properly
+          sleep 10
+        
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ./DevOps_Local/BE/requirements.txt
+
+      # Run tests with pytest
+      - name: Run tests with pytest
+        run: |
+          pytest ./DevOps_Local/BE/tests
+
       # Build and push Docker image
       - name: Build Docker image
         run: |
