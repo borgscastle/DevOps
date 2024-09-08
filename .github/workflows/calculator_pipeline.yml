@@ -41,7 +41,7 @@ jobs:
       - name: Start the REST API
         run: |
           # Run the API in the background
-          python ./DevOps_Local/BE/calculator.py --rest &
+          python BE/calculator.py --rest &
           # Wait for a few seconds to ensure the API starts properly
           sleep 10
         
@@ -54,7 +54,7 @@ jobs:
       # Run tests with pytest
       - name: Run tests with pytest
         run: |
-          pytest ./DevOps_Local/BE/tests
+          pytest BE/tests
 
       # Build and push Docker image
       - name: Build Docker image
