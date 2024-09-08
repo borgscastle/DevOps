@@ -1,4 +1,4 @@
 FROM python:3.12-slim
-COPY __pycache__ calculator_helper.py calculator_rest_service.py calculator.py logger.py models.py requirements.txt / 
+COPY . .
 RUN pip install -r requirements.txt
 ENTRYPOINT [ "python", "calculator.py" ]
