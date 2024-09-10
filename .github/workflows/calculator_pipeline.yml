@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: junit-report
-          path: $GITHUB_WORKSPACE/report.xml
+          path: /home/runner/work/DevOps/DevOps/report.xml
 
       # Build and push Docker image
       - name: Build Docker image
