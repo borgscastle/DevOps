@@ -48,11 +48,8 @@ jobs:
       - name: Starting docker
         run: | 
           docker run --name selenium -d --add-host host.docker.internal:host-gateway -p 4444:4444 -p 5900:5900 --shm-size="2g" selenium/standalone-chrome:4.2.1-20220531
-
-      # Start docker 2
-      - name: Starting docker 2
-        run: |
           docker compose -p webcalculator up -d
+          sleep 30
 
       # Start the REST API
       - name: Start the REST API
@@ -60,7 +57,7 @@ jobs:
           # Run the API in the background
           python BE/calculator.py --rest &
           # Wait for a few seconds to ensure the API starts properly
-          sleep 60
+          sleep 30
 
       - name: Set up PYTHONPATH
         run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
