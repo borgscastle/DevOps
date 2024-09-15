@@ -65,8 +65,8 @@ jobs:
       # Run tests with pytest
       - name: Run tests with pytest
         run: |
-          pytest tests --junit-xml=$GITHUB_WORKSPACE/report.xml
-
+          python -m pytest 
+          
       - name: Upload JUnit XML report
         uses: actions/upload-artifact@v3
         with:
