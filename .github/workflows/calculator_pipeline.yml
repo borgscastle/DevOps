@@ -60,7 +60,7 @@ jobs:
           # Run the API in the background
           python BE/calculator.py --rest &
           # Wait for a few seconds to ensure the API starts properly
-          sleep 3
+          sleep 60
 
       - name: Set up PYTHONPATH
         run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
