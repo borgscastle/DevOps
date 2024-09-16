@@ -11,7 +11,7 @@ class WebBase:
         """ Setup to run once
             Initiatiung some common parameters
         """
-        cls.app_url = 'http://host.docker.internal:4444'
+        cls.app_url = 'http://host.docker.internal:8080'
 
     def setup_method(self):
         """ Setup to run before every test
@@ -20,11 +20,8 @@ class WebBase:
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--disable-search-engine-choice-screen")
         #self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options = chrome_options)
-<<<<<<< HEAD
-        self.driver = webdriver.Remote(command_executor = "http://host.docker.internal:4444", options=chrome_options)
-=======
         self.driver = webdriver.Remote(command_executor = "http://localhost:4444", options=chrome_options)
->>>>>>> 397196674a7bc05851680a5a0e1a280048150da2
+
         self.driver.set_window_size(1920,1080)
         self.driver.get(self.app_url)
         if (LoginPage(self.driver).element.logout.find()):
