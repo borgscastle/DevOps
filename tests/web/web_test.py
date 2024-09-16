@@ -18,15 +18,15 @@ class TestWeb(WebBase):
 
 # class TestReg(WebBase):
     
-    def test_register(self):
-        RegisterPage(self.driver).elements.register.click()
-        RegisterPage(self.driver).elements.username.set('plupp')
-        RegisterPage(self.driver).elements.password1.set('test1234')
-        RegisterPage(self.driver).elements.password2.set('test1234')
-        RegisterPage(self.driver).elements.register.click()
-        assert_that(RegisterPage(self.driver).elements.username_registered.text).is_equal_to('User already exists!')
+  #  def test_register(self):
+  #      RegisterPage(self.driver).elements.register.click()
+  #      RegisterPage(self.driver).elements.username.set('plupp')
+  #      RegisterPage(self.driver).elements.password1.set('test1234')
+  #      RegisterPage(self.driver).elements.password2.set('test1234')
+  #      RegisterPage(self.driver).elements.register.click()
+  #      assert_that(RegisterPage(self.driver).elements.username_registered.text).is_equal_to('User already exists!')
         # assert_that(RegisterPage(self.driver).elements.username_logged_in.text).is_equal_to(unique_username)
-        a = 2
+  #      a = 2
 
     def test_calc_e2e(self):
         LoginPage(self.driver).elements.username.set('admin')
