@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from tests.web.pages.login_page import LoginPage
+from time import sleep
 
 class WebBase:
 
@@ -26,4 +28,7 @@ class WebBase:
         """ Teardown to run after every test
             Stop the driver
         """
+        LoginPage(self.driver).element.logout.click()
+        sleep(1)
+        
         self.driver.quit()
