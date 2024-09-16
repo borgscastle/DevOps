@@ -52,12 +52,12 @@ jobs:
           sleep 30
 
       # Start the REST API
-      - name: Start the REST API
-        run: |
-          # Run the API in the background
-          python BE/calculator.py --rest &
+     # - name: Start the REST API
+      #  run: |
+       #   # Run the API in the background
+        #  python BE/calculator.py --rest &
           # Wait for a few seconds to ensure the API starts properly
-          sleep 30
+         # sleep 30
 
       # Run tests with pytest
       - name: Run tests with pytest
