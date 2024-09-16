@@ -23,6 +23,7 @@ class WebBase:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.driver = webdriver.Remote(command_executor = "http://host.docker.internal:4444", options=chrome_options)
 =======
         self.driver = webdriver.Remote(command_executor = "http://localhost:4444", options=chrome_options)
@@ -34,6 +35,9 @@ class WebBase:
 =======
 
 >>>>>>> ff0f6eb818806b656e198fea2ccd03aaf6aede1f
+=======
+        self.driver = webdriver.Remote(command_executor = "http://host.docker.internal:8080", options=chrome_options)
+>>>>>>> parent of 807c3b5 (Update test_base.py 16 sep v1)
 =======
         self.driver = webdriver.Remote(command_executor = "http://host.docker.internal:8080", options=chrome_options)
 >>>>>>> parent of 807c3b5 (Update test_base.py 16 sep v1)
