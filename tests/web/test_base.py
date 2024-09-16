@@ -23,12 +23,12 @@ class WebBase:
         self.driver = webdriver.Remote(command_executor = "http://localhost:4444", options=chrome_options)
         self.driver.set_window_size(1920,1080)
         self.driver.get(self.app_url)
-        LoginPage(self.driver).element.logout.click()
-        sleep(1)
+        if (LoginPage(self.driver).element.logout.find()):
+           LoginPage(self.driver).element.logout.click()
 
     def teardown_method(self):
         """ Teardown to run after every test
             Stop the driver
         """
-        
+        LoginPage(self.driver).element.logout.click()
         self.driver.quit()
