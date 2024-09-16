@@ -63,7 +63,7 @@ jobs:
       # Run tests
       - name: Run tests
         run: |
-          pytest --junit-xml=report.xml
+          python -m pytest
       - name: Publish test report
         uses: mikepenz/action-junit-report@v4
         if: success() || failure() # always run even if the previous step fails
