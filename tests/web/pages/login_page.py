@@ -12,7 +12,6 @@ class LoginPage(PageBase):
             'password': Element('//input[@id="password"]', self),
             'login': Element('//button[@id="login"]', self),
             'username_logged_in': Element('//label[@id="user-name"]', self),
-            'logout': Element('//button[@id="logout-button"]', self),
         }
 
         self.elements = munchify(self.page_elements)
@@ -59,7 +58,7 @@ class CalcPage(PageBase):
             'keyclear': Element('//button[@id="key-clear"]', self),
             'summa': Element('//input[@id="calculator-screen"]', self),
             'historybutton': Element('//button[@id="toggle-button"]', self),
-            'historypanel': Element('//textarea[@id="history"]', self),
+            'historypanel': Element('//textarea[@id="history"]', self)
         }
 
         self.elements = munchify(self.page_elements)
