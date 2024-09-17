@@ -70,6 +70,12 @@ jobs:
           name: junit-report
           path: /home/runner/work/DevOps/DevOps/report.xml
 
+      - name: Publish test report
+        uses: mikepenz/action-junit-report@v4
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: '/home/runner/work/DevOps/DevOps/report.xml'
+
       # Build and push Docker image
       - name: Build Docker image
         run: |
