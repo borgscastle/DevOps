@@ -1,0 +1,80 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Login to Azure Container Registry
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: judevops.azurecr.io
+          username: ${{ secrets.USERNAME_FOR_REPO }}
+          password: ${{ secrets.password_for_devopstoken }}
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+      
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r BE/requirements.txt
+          pip install -r BE/assignment-3-requirements.txt
+
+      # Start docker
+      - name: Starting docker
+        run: | 
+          docker run --name selenium -d --add-host host.docker.internal:host-gateway -p 4444:4444 -p 5900:5900 --shm-size="2g" selenium/standalone-chrome:4.2.1-20220531
+          docker compose -p webcalculator up -d
+          sleep 30
+
+      # Start the REST API
+     # - name: Start the REST API
+      #  run: |
+       #   # Run the API in the background
+        #  python BE/calculator.py --rest &
+          # Wait for a few seconds to ensure the API starts properly
+         # sleep 30
+
+      # Run tests with pytest
+      - name: Run tests with pytest
+        run: |
+          python -m pytest 
+          
+      - name: Upload JUnit XML report
+        uses: actions/upload-artifact@v3
+        with:
+          name: junit-report
+          path: /home/runner/work/DevOps/DevOps/report.xml
+
+      # Build and push Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t judevops.azurecr.io/jonathan_borg-calc BE
+          
+      - name: Push Docker image
+        run: |
+          docker push judevops.azurecr.io/jonathan_borg-calc
