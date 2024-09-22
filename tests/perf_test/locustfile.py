@@ -44,7 +44,7 @@ class CalculatorUser(HttpUser):
             if not response_data['result'] == 6:
                 response.failure(f"Expected result to be 6 but was {response_data['result']}")
 
-    @task
+    @task(10)
     def divide(self):
         body = {
             "operation": "divide",
